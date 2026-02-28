@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt Builder</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Prompt Builder</h1>
+      <nav class="tabs" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-builder" id="tab-builder" data-tab="builder">
+          ✏️ Builder
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-saved" id="tab-saved" data-tab="saved">
+          📋 Saved Prompts
+        </button>
+      </nav>
+    </header>
+
+    <!-- Tab 1: Prompt Builder -->
+    <section id="panel-builder" role="tabpanel" aria-labelledby="tab-builder" class="tab-panel active">
+      <form id="builder-form" autocomplete="off">
+
+        <div class="field-group">
+          <label for="task">1. Task <span class="hint">What should the LLM do?</span></label>
+          <textarea id="task" name="task" rows="3" placeholder="e.g. Write a professional email responding to a customer complaint"></textarea>
+        </div>
+
+        <div class="field-group">
+          <label for="context">2. Context <span class="hint">Background info the LLM needs</span></label>
+          <textarea id="context" name="context" rows="3" placeholder="e.g. The customer is unhappy about a delayed order. Our policy is to offer a 10% discount."></textarea>
+          <label for="context-links" class="sub-label">🔗 Links (websites or files)</label>
+          <textarea id="context-links" name="context-links" rows="2" placeholder="Paste URLs or file references, one per line"></textarea>
+        </div>
+
+        <div class="field-group">
+          <label for="format">3. Format <span class="hint">Desired output structure</span></label>
+          <textarea id="format" name="format" rows="2" placeholder="e.g. Bulleted list, markdown table, plain paragraph, JSON…"></textarea>
+        </div>
+
+        <div class="field-group">
+          <label for="tone">4. Tone <span class="hint">Voice and style</span></label>
+          <textarea id="tone" name="tone" rows="2" placeholder="e.g. Formal, friendly, concise, empathetic…"></textarea>
+        </div>
+
+        <div class="field-group">
+          <label for="example">5. Example <span class="hint">Sample input/output for reference</span></label>
+          <textarea id="example" name="example" rows="3" placeholder="e.g. Input: 'Order #123 is late.' Output: 'Dear Customer, We sincerely apologize…'"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="build-btn" class="btn btn-primary">⚡ Build Prompt</button>
+          <button type="button" id="clear-btn" class="btn btn-secondary">🗑️ Clear</button>
+        </div>
+      </form>
+
+      <div id="output-section" class="output-section hidden">
+        <label for="final-prompt">Generated Prompt</label>
+        <textarea id="final-prompt" rows="10" readonly></textarea>
+        <div class="actions">
+          <button type="button" id="copy-btn" class="btn btn-primary">📋 Copy to Clipboard</button>
+          <button type="button" id="save-btn" class="btn btn-secondary">💾 Save Prompt</button>
+        </div>
+        <p id="copy-status" class="status-msg hidden">✅ Copied!</p>
+        <p id="save-status" class="status-msg hidden">✅ Prompt saved!</p>
+      </div>
+    </section>
+
+    <!-- Tab 2: Saved Prompts -->
+    <section id="panel-saved" role="tabpanel" aria-labelledby="tab-saved" class="tab-panel hidden">
+      <div class="saved-header">
+        <h2>Saved Prompts</h2>
+        <button type="button" id="clear-all-btn" class="btn btn-danger btn-sm">🗑️ Clear All</button>
+      </div>
+      <p id="no-saved-msg" class="empty-msg">No saved prompts yet. Build and save one from the Builder tab!</p>
+      <ul id="saved-list" class="saved-list"></ul>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

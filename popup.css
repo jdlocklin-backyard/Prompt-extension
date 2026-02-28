@@ -1,0 +1,238 @@
+/* ─── Reset & Base ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  background: #f5f7fa;
+  color: #1e1e2e;
+  min-width: 420px;
+  max-width: 480px;
+}
+
+/* ─── Container ───────────────────────────────────────────────────────────── */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* ─── Header ──────────────────────────────────────────────────────────────── */
+header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 12px 16px 0;
+  color: #fff;
+}
+
+header h1 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 10px;
+}
+
+/* ─── Tabs ────────────────────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px 6px 0 0;
+  background: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.tab-btn:hover { background: rgba(255,255,255,0.35); }
+
+.tab-btn.active {
+  background: #f5f7fa;
+  color: #5a3fd9;
+}
+
+/* ─── Panels ──────────────────────────────────────────────────────────────── */
+.tab-panel {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tab-panel.hidden { display: none; }
+
+/* ─── Form Fields ─────────────────────────────────────────────────────────── */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 12px;
+  color: #4a4a6a;
+}
+
+label .hint {
+  font-weight: 400;
+  color: #8888aa;
+  font-size: 11px;
+  margin-left: 4px;
+}
+
+.sub-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b6b8a;
+  margin-top: 4px;
+}
+
+textarea {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1.5px solid #d1d5e8;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #1e1e2e;
+  background: #fff;
+  resize: vertical;
+  transition: border-color 0.15s;
+  line-height: 1.5;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102,126,234,0.15);
+}
+
+textarea[readonly] {
+  background: #f0f2ff;
+  border-color: #c0c8f0;
+  cursor: default;
+}
+
+/* ─── Actions ─────────────────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn:hover { opacity: 0.88; }
+.btn:active { transform: scale(0.97); }
+
+.btn-primary { background: #667eea; color: #fff; }
+.btn-secondary { background: #e2e5f1; color: #4a4a6a; }
+.btn-danger { background: #ff5e6c; color: #fff; }
+.btn-sm { font-size: 11px; padding: 4px 10px; }
+
+/* ─── Output ──────────────────────────────────────────────────────────────── */
+.output-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1.5px solid #e2e5f1;
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.output-section label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a4a6a;
+}
+
+.output-section.hidden { display: none; }
+
+/* ─── Status messages ─────────────────────────────────────────────────────── */
+.status-msg {
+  font-size: 12px;
+  color: #2ea04f;
+  font-weight: 600;
+}
+
+.status-msg.hidden { display: none; }
+
+/* ─── Saved Prompts Tab ───────────────────────────────────────────────────── */
+.saved-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.saved-header h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e1e2e;
+}
+
+.empty-msg {
+  color: #8888aa;
+  font-size: 12px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* ─── Saved List ──────────────────────────────────────────────────────────── */
+.saved-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.saved-item {
+  background: #fff;
+  border: 1.5px solid #e2e5f1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.saved-item .item-title {
+  font-weight: 700;
+  font-size: 12px;
+  color: #1e1e2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.saved-item .item-preview {
+  font-size: 11px;
+  color: #6b6b8a;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.saved-item .item-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
